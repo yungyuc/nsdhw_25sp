@@ -7,7 +7,7 @@ import os.path
 if len(sys.argv) < 2:
     sys.stdout.write('missing file name\n')
 elif len(sys.argv) > 2:
-    sys.stdout.write('only one argument is allowed\n')
+    sys.stdout.write('only one argument is allowed\n') 
 else:
     fname = sys.argv[1]
     if os.path.exists(fname):
