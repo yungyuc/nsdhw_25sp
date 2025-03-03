@@ -14,7 +14,7 @@ else:
     fname = sys.argv[1]
     if os.path.exists(fname):
         with open(fname) as fobj:
-            lines = fobj.readlines()
-        sys.stdout.write('{} lines in {}\n'.format(len(lines), fname))
+            fcontent = fobj.read()
+        sys.stdout.write('{} lines in {}\n'.format(fcontent.count('\n'), fname))
     else:
         sys.stdout.write('{} not found\n'.format(fname))
