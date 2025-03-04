@@ -3,11 +3,11 @@ Basic Information
 =================
 
 GitHub Repository:
-  https://github.com/johnny19436/risk-management-engine
+  https://github.com/johnny19436/Risma
 
 About:
-  A command-line tool for real-time risk analysis in hedge funds using modern
-  C++ (with OpenCL) and Python.
+  A command-line tool for real-time risk management and analysis in hedge funds 
+  using modern C++ (with OpenCL) and Python.
 
 Problem to Solve
 ================
@@ -79,32 +79,39 @@ The project is supported by a robust engineering setup:
 
 3. Testing Framework:
 
-   - C++ Testing: Implements unit tests using Google test for C++. These tests cover the
-     critical algorithms (e.g., risk metric computations).
-    
-   - Python Testing: Uses pytest to validate API wrappers, data processing,
-     and visualization modules.
+   - C++ Testing: Using Google test for Core Risk Computation Functions. 
+
+     - Accuracy: Ensure computed VaR,ES matches expected results for known inputs.
+     - Edge Cases: Test with extreme values (e.g., highly volatile assets, zero returns).
+     - Robustness: Handle cases with limited data or highly skewed return distributions.
+
+   - Python Testing: Uses pytest to validate API wrappers.
+
+     - Integration Testing: Verify that Python functions correctly wrap C++ computations.
+     - Exception Handling: Gracefully handle erroneous inputs or C++ failures.
+
 
 Schedule
 ========
 
 The project is planned for 8-week development:
 
-**Planning phase** (6 weeks from mm/dd to mm/dd):
-  * Week 1: Set up repository, initial project skeleton, and prototype
+**Planning phase** (11 weeks from 3/10 to 5/26):
+  * Week 1 (3/10): Set up repository, initial project skeleton, and prototype
     for basic functionalities.
-    
-  * Week 2: Develop core risk computation functions in C++.
-  * Week 3: Create Python wrappers and a basic CLI interface.
-  * Week 4: Integrate C++ and Python modules; begin unit testing on C++.
-  * Week 5: Optimize parallel computations and enhance performance.
-  * Week 6: Full system testing and comprehensive documentation.
+  * Week 3 (3/24): Develop core risk computation functions in C++.
+  * Week 4 (3/31): Create Python wrappers and a basic CLI interface.
+  * Week 5 (4/7): Integrate C++ and Python modules; begin unit testing on C++.
+  * Week 6 (4/14): Optimize parallel computations and enhance performance.
+  * Week 7 (4/21): Full system testing and comprehensive documentation.
 **Integration** and Presentation Phase (2 weeks):
-  * Week 7: Final feature integration, address feedback, polish CLI.
-  * Week 8: Prepare final presentation and finalize repository details.
+  * Week 9 (5/5): Final feature integration, address feedback, polish CLI.
+  * Week 10 (5/12): Prepare final presentation and finalize repository details.
 
 References
 ==========
 
 - `Value at Risk (VaR) - Investopedia <https://www.investopedia.com/terms/v/var.asp>`__
 - `Expected Shortfall (ES or CVaR) - Investopedia <https://www.investopedia.com/terms/c/conditional_value_at_risk.asp>`__
+-  Use Yahoo Finance, Google Finance, and Alpha Vantage as reference for 
+   historical stock prices, indices, or currency data.
