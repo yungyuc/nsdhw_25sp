@@ -3,11 +3,10 @@
 import sys
 import os
 import subprocess
-
 python_bin = os.getenv("PYTHON_BIN","python3")
 
 try:
-    subprocess.run([python_bin,"--version"], check=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    subprocess.run([python_bin,"--version"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 except FileNotFoundError:
     print(f"exec: {python_bin}: not found", file=sys.stderr)
     sys.exit(1)
