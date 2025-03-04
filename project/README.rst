@@ -78,6 +78,12 @@ Follow the format to add your project:
 
 .. note::
 
+2. `xuryp <https://github.com/xuryp>`__ for
+   `Computational Geometry Library for Convex Hull Computation <xuryp/README.rst>`__:
+   https://github.com/xuryp/Computational_Geometry_Library_for_Convex_Hull_Computation
+
+.. note::
+
   Append your project after the first example entry.  Do not delete the example
   entry.
 
