@@ -64,15 +64,11 @@ Three formulas for evaluating NoC load imbalance:
 
 ### Implementation Plan
 
-1. Implement an **8×8 2D NoC** in C++, where each node is a router.
-2. Initialize each node with **maximum capacity** and **current load**.
-3. Simulate **hotspot scenarios** targeting an LBF of approximately 1.5–2.
-4. Implement an **adaptive routing function** in C++.
-5. Generate **random traffic** at each cycle to simulate real-world
-   conditions.
-6. Observe changes in LBF and evaluate congestion mitigation.
-7. Bind the C++ NoC core to Python using **Pybind11**.
-8. Use Python for **initialization and visualization** of the simulation.
+First, in C++an 8×8 2D Network-on-Chip (NoC) will be created, where each node is defined as a router. The system will be initialized with relevant information for each node, such as maximum capacity and current load. A hotspot scenario will be generated, aiming for an LBF value of approximately 1.5–2.
+
+Next, the NoC adaptive routing function will be implemented in C++. Additionally, at each cycle, packets will be randomly generated at a random node and sent to another random destination node, simulating real-world traffic conditions. During the dynamic simulation, the changes in LBF will be observed, and the effectiveness of this adaptive routing method in mitigating system congestion under hotspot conditions will be evaluated.
+
+Finally, Pybind11 will be used to bind the C++ core to Python, with Python handling the initialization and visualization aspects of the simulation. 
 
 ## API Description
 
