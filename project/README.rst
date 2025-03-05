@@ -76,6 +76,10 @@ Follow the format to add your project:
    `Project subject <github_account_name/README.rst>`__:
    https://github.com/github_account_name/project_name
 
+2. `5000user5000 <https://github.com/5000user5000>`__ for
+   `mpGEMM <5000user5000/README.rst>`__:
+   https://github.com/5000user5000/mpGEMM
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example

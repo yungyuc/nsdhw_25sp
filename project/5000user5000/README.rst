@@ -1,5 +1,5 @@
-Efficient Mixed-Precision Inference Engine
-=========================================
+LUT-based Mixed-Precision GEMM
+==============================
 
 
 Basic Information
@@ -23,113 +23,125 @@ multiplication (mpGEMM). Some recent research suggests using lookup tables
 Problem to Solve
 ================
 
-- Support mixed-precision matrix computation (weight INT1~4) where activation 
+- Support mixed-precision matrix computation (weight INT1~4) where activation
 tensors are limited to FP16.
 
-- Implement **precomputed lookup table (LUT)-based computation** to accelerate 
+- Implement **precomputed lookup table (LUT)-based computation** to accelerate
 low-bit matrix multiplications.
 
 - Enable the LUT to reside in the fastest on-chip memory and parallel lookup.
 
+- Preliminary estimates suggest that vendor libraries such as MKL or
+Accelerate can be **10× to 1000×** faster than naive GEMM implementations.
+This project aims to evaluate how closely LUT-based methods can approach these
+performance levels in mixed-precision low-bit GEMM.
 
 Prospective Users
 =================
 
-This inference engine will benefit:
+This project will benefit:
 
-1. **Machine Learning Practitioners**: Researchers and engineers developing 
-efficient LLM inference pipelines.
-
-2. **Embedded AI Developers**: Those optimizing AI models for deployment on 
+1. **Embedded AI Developers**: Those optimizing AI models for deployment on
 edge devices.
 
-3. **Data Scientists**: Users who need optimized inference on diverse hardware 
+2. **Data Scientists**: Users who need optimized inference on diverse hardware
 setups.
 
-4. **Academia & Research Labs**: Those investigating numerical optimization 
+3. **Academia & Research Labs**: Those investigating numerical optimization
 and quantization techniques.
 
 
 System Architecture
 ===================
 
-The proposed mixed-precision inference engine consists of the following 
-components:
+The project consists of the following components:
 
-**Computational Core (C++ - Low-Level Implementation)**
+**Lookup Table Module**
 
-- Implements **optimized matrix multiplication** (GEMM) using SIMD (AVX, NEON).
+- Precomputes and stores the LUT in the on-chip memory.
 
-- Implements **LUT-based computation** to accelerate quantized matrix 
-multiplications.
+- Uses SIMD instructions (intel AVX) to accelerate lookup.
 
-- Implements **traditional matrix multiplication** and **benchmark module** to 
-compare latency with the LUT-based one.
+**GEMM Module**
 
-**Python API (High-Level Interface)**
+- Implements the  matrix multiplication algorithm in C++.
 
-- Provides a **user-friendly wrapper** for defining models and executing 
-inference.
+- With 3 modes: **LUT-based**, **naive**, and **vendor** libraries
+(MKL/Accelerate).
 
-- Allows users to specify custom quantization strategies (INT1~4).
+- Supports mixed-precision matrix computation (weight INT1~4, activation FP16).
+
+**Benchmarking Module**
+
+- The benchmarking module will compare latency between LUT-based GEMM, vendor
+libraries, and traditional dequantization-based methods.
 
 
-API Description
-===============
 
-The API will provide the following functionalities:
+*****************
+ API Description
+*****************
 
-1. **Custom GEMM Implementation:** Provides high-performance GEMM operations 
-with mixed-precision support.
+.. code-block:: python
 
-2. **Lookup Table Operations:** API for LUT-based computation to accelerate 
-quantized matrix multiplications.
+  import mpGEMM
 
-3. **Benchmark:** Comparing LUT-based methods against traditional 
-dequantization-based methods in terms of latency.
+  # Initialize GEMM engine (Choose backend: "lut", "mkl", "naive")
+  gemm = mpGEMM(backend="lut", use_simd=True)
+
+  # Perform GEMM operation, specifying weight bit-width
+  output = gemm.matmul(weights, activations, weight_bit_width=4)
+
+  # Benchmark different computation modes
+  gemm.benchmark(methods=["lut", "mkl", "naive"], num_runs=10)
 
 
 Engineering Infrastructure
 ==========================
 
-- **Automated Build System:** Uses CMake to set up the C++ build system and 
+- **Automated Build System:** Uses CMake to set up the C++ build system and
 setuptools to build Python packages.
 
-- **CI**: GitHub Actions for automated testing and benchmarking. The CI 
+- **CI**: GitHub Actions for automated testing and benchmarking. The CI
 pipeline includes:
 
-  - **Correctness tests**: Ensures matrix multiplication results are 
+  - **Correctness tests**: Ensures matrix multiplication results are
 numerically accurate.
 
-  - **Performance benchmarks**: Compares LUT-based GEMM with traditional 
+  - **Performance benchmarks**: Compares LUT-based GEMM with traditional
 dequantization-based methods and vendor libraries (MKL).
 
-- **Version Control:** Uses Git for version management, with all development 
+- **Version Control:** Uses Git for version management, with all development
 processes submitted to the GitHub repository.
 
 
 Schedule
 ========
 
-- **Week 1**: Design computational core architecture, set up project 
+- **Week 1 (3/17)**: Research the relevant field knowledge, set up project
 repository.
 
-- **Week 2**: Implement matrix multiplication kernels in C++. Set up CI to run 
-correctness tests on basic GEMM functions.
+- **Week 2 (3/24)**: Implement GEMM module in C++. Set up CI to 
+run **correctness tests** on basic GEMM functions.
 
-- **Week 3**: Implement lookup table approach.
+- **Week 3 (3/31)**: Implement lookup table module.
 
-- **Week 4**: Use SIMD instructions to accelerate lookup table computations.
+- **Week 4 (4/7)**: Use SIMD instructions to accelerate table lookup.
 
-- **Week 5**: Optimize memory management and implement precision scaling.
+- **Week 5 (4/14)**: Optimize memory management and implement different 
+precision support. Add vendor library support in GEMM module.
 
-- **Week 6**: Integrate the API and complete documentation.
+- **Week 6 (4/21)**: Develop a benchmarking module and start documentation.
 
-- **Week 7**: Develop a performance benchmark script to evaluate this project 
-and refine documentation.
+- **Week 7 (4/28)**: Integrate the API to evaluate this project and refine 
+documentation.
 
-- **Week 8**: Final optimizations and documentation.
+- **Week 8 (5/5)**: Final optimizations and documentation updates.
 
+- **Week 9 (5/12)**: Compare LUT-based GEMM with naive GEMM and vendor
+libraries (MKL/Accelerate) and finish documentation.
+ 
+- **Week 10 (5/19)**: Prepare for presentation.
 
 References
 ==========
