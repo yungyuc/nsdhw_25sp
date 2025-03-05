@@ -94,7 +94,7 @@ The project is supported by a robust engineering setup:
 Schedule
 ========
 
-The project is planned for 8-week development:
+The project is planned for 11-week development:
 
 **Planning phase** (11 weeks from 3/10 to 5/26):
   * Week 1 (3/10): Set up repository, initial project skeleton, and prototype

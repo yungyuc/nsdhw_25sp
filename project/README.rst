@@ -61,11 +61,6 @@ Time Table
     - `github_account_name <https://github.com/github_account_name>`__
     - `Project subject <github_account_name/README.rst>`__:
       https://github.com/github_account_name/project_name
-  * - 2
-    - 07:15 - 07:30
-    - `johnny19436 <https://github.com/johnny19436>`__
-    - `Risma <johnny19436/README.rst>`__:
-      https://github.com/johnny19436/Risma
 
 ..
  Projects by Topics
