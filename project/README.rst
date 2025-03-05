@@ -76,6 +76,10 @@ Follow the format to add your project:
    `Project subject <github_account_name/README.rst>`__:
    https://github.com/github_account_name/project_name
 
+2. `Seco1024 <https://github.com/Seco1024>`__ for
+   `ZenANN <Seco1024/README.rst>`__:
+   https://github.com/Seco1024/ZenANN
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example
