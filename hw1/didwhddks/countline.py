@@ -7,7 +7,7 @@ python_bin = os.getenv('PYTHON_BIN')
 
 if python_bin:
     if python_bin != 'python2' and python_bin != 'python3':
-        sys.stdout.write("Specified python binary '{}' not found\n".format(python_bin))
+        sys.stderr.write("exec: {}: not found\n".format(python_bin))
         exit(1)
 else:
     sys.stdout.write('PYTHON_BIN is not set\n')
