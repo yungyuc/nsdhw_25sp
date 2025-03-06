@@ -56,13 +56,13 @@ System Architecture
 
 The project consists of the following components:
 
-**Lookup Table Module**
+**Lookup Table Component**
 
 - Precomputes and stores the LUT in the on-chip memory.
 
 - Uses SIMD instructions (intel AVX) to accelerate lookup.
 
-**GEMM Module**
+**GEMM Component**
 
 - Implements the  matrix multiplication algorithm in C++.
 
@@ -71,9 +71,9 @@ The project consists of the following components:
 
 - Supports mixed-precision matrix computation (weight INT1~4, activation FP16).
 
-**Benchmarking Module**
+**Benchmarking Component**
 
-- The benchmarking module will compare latency between LUT-based GEMM, vendor
+- The benchmarking Component will compare latency between LUT-based GEMM, vendor
 libraries, and traditional dequantization-based methods.
 
 
@@ -121,17 +121,17 @@ Schedule
 - **Week 1 (3/17)**: Research the relevant field knowledge, set up project
 repository.
 
-- **Week 2 (3/24)**: Implement GEMM module in C++. Set up CI to 
+- **Week 2 (3/24)**: Implement GEMM Component in C++. Set up CI to 
 run **correctness tests** on basic GEMM functions.
 
-- **Week 3 (3/31)**: Implement lookup table module.
+- **Week 3 (3/31)**: Implement lookup table component.
 
 - **Week 4 (4/7)**: Use SIMD instructions to accelerate table lookup.
 
 - **Week 5 (4/14)**: Optimize memory management and implement different 
-precision support. Add vendor library support in GEMM module.
+precision support. Add vendor library support in GEMM component.
 
-- **Week 6 (4/21)**: Develop a benchmarking module and start documentation.
+- **Week 6 (4/21)**: Develop a benchmarking component and  documentation.
 
 - **Week 7 (4/28)**: Integrate the API to evaluate this project and refine 
 documentation.
