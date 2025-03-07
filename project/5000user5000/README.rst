@@ -180,7 +180,7 @@ vendor libraries, and naive dequantization-based methods.
 
   # Measure numerical error compared to FP16 reference
   error = gemm.measure_error(fp16_output, output, method="mse")
-  print(f"Mean Squared Error: {error.mse}, Max Error: {error.max_error}")
+  print(f"Mean Squared Error: {error.mse}")
 
 
 
