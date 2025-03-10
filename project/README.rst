@@ -81,8 +81,7 @@ Follow the format to add your project:
 3. `Seco1024 <https://github.com/Seco1024>`__ for
    `ZenANN <Seco1024/README.rst>`__:
    https://github.com/Seco1024/ZenANN
-
-2. `5000user5000 <https://github.com/5000user5000>`__ for
+4. `5000user5000 <https://github.com/5000user5000>`__ for
    `mpGEMM <5000user5000/README.rst>`__:
    https://github.com/5000user5000/mpGEMM
 
