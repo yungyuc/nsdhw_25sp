@@ -1,6 +1,8 @@
 ===========================================
-Optimized Python Library for LCA Problem Solving
+PyLCA: Optimized Python Library for LCA Problem Solving
 ===========================================
+
+GitHub Repo: https://github.com/didwhddks/PyLCA
 
 Basic Information
 =================
