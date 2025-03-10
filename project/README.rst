@@ -85,6 +85,10 @@ Follow the format to add your project:
    `mpGEMM <5000user5000/README.rst>`__:
    https://github.com/5000user5000/mpGEMM
 
+2. `didwhddks <https://github.com/didwhddks>`__ for
+   `PyLCA <didwhddks/README.rst>`__:
+   https://github.com/didwhddks/PyLCA
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example
