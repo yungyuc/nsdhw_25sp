@@ -75,8 +75,10 @@ Follow the format to add your project:
 1. `github_account_name <https://github.com/github_account_name>`__ for
    `Project subject <github_account_name/README.rst>`__:
    https://github.com/github_account_name/project_name
-
-2. `Seco1024 <https://github.com/Seco1024>`__ for
+2. `johnny19436 <https://github.com/johnny19436>`__ for
+   `Risma <johnny19436/README.rst>`__:
+   https://github.com/johnny19436/Risma
+3. `Seco1024 <https://github.com/Seco1024>`__ for
    `ZenANN <Seco1024/README.rst>`__:
    https://github.com/Seco1024/ZenANN
 
