@@ -84,8 +84,7 @@ Follow the format to add your project:
 4. `5000user5000 <https://github.com/5000user5000>`__ for
    `mpGEMM <5000user5000/README.rst>`__:
    https://github.com/5000user5000/mpGEMM
-
-2. `didwhddks <https://github.com/didwhddks>`__ for
+5. `didwhddks <https://github.com/didwhddks>`__ for
    `PyLCA <didwhddks/README.rst>`__:
    https://github.com/didwhddks/PyLCA
 
