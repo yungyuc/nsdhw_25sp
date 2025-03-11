@@ -25,7 +25,7 @@ pybind_wrapper.o: pybind_wrapper.cpp
 	$(CXX) $(CXXFLAGS) -c pybind_wrapper.cpp -I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE)
 
 test:
-	PYTHONPATH=".:$PYTHONPATH" pytest -v test_vector_angle.py
+	PYTHONPATH=".:$(PYTHONPATH)" python3 -m pytest -v test_vector_angle.py
 
 clean:
 	rm -f *.o _vector.so
