@@ -1,15 +1,20 @@
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -O3
+
+.PHONY: all run check clean
+
 all: main
 
 main: line.o main.o
-	g++ -o main line.o main.o
+	${CXX} ${CXXFLAGS} -o main line.o main.o
 
 line.o: line.cpp line.hpp
-	g++ -c line.cpp
+	${CXX} ${CXXFLAGS} -c line.cpp
 
 main.o: main.cpp line.hpp
-	g++ -c main.cpp
+	${CXX} ${CXXFLAGS} -c main.cpp
 
-run:
+run: main
 	./main
 
 check: run
