@@ -37,12 +37,34 @@ The Santa Fe Institute Artificial Stock Market (SFI-ASM) simulates a market
 comprising stocks and a banking asset, in which agents perform stock 
 transactions.
 
-- Agent
-  - Rule
-  - Forecaster
-  - Classifier
-  - Demand
-  - Genetic Algorithm (GA)
+- Stock market
+  - marker clearing
+  - dividend
+  - price
+- agent
+  - predictor
+    - condition part
+    - forecaste part
+- Genetic algorithm
+
+```
+function step(){
+  # create the dividend for this step
+
+  # for each agent: 
+    # filter what predictors can be used in this round
+      # for each predictors selected, reflect its accuracy based on price 
+data. 
+      # among all updated predictors, choose one with best accuracy to use in
+      this step.
+    # create its own demand based on the chosen predictors 
+  
+  # do market clearing, this create the price of stock market in next step
+
+  # for each agent with a probability :
+    # do genetic algorithm on currently stored predictors. 
+}
+```
 
 Each agent maintains multiple rules. Each rule contains parameters used by a 
 forecaster to estimate future stock prices, and classifiers to determine the 
@@ -50,12 +72,6 @@ specific market conditions under which each rule is applicable. Based on these
 conditions, agents calculate their demand for stocks. The genetic algorithm 
 iteratively evolves these rules by selecting and modifying them according to 
 their performance.
-
-- Market
-  - Asset
-    - Stock
-    - Bank
-  - Trade
 
 The SFI-ASM explicitly includes a bank asset, providing a risk-free interest 
 rate. The agents' demand functions are deliberately designed as linear 
@@ -81,32 +97,27 @@ using Google Test for the C++ components and pytest for the Python interface.
 Schedule
 ========
 
-Week 1 (03/17):
+Week 1-3  (03/17):
 - Implement core structures, including market setup, agents, rules, 
 classifiers, forecasters, and demand functions (excluding the Genetic 
 Algorithm).
 
-- Research and identify potential computational acceleration methods, focusing 
-on optimizing agent-based computations, improving market simulation 
-efficiency, and reducing execution time in the C++ core.
-
 Weeks 2-3 (03/24 - 03/31):
-- Implement the Genetic Algorithm (GA).
-
-Weeks 4-5 (04/07 - 04/14):
-- Conduct  testing of the C++ core components.
-
-Weeks 6-7 (04/21 - 04/28):
 - Develop the Python wrapper and corresponding API, including functionality 
 for system initialization, executing trading steps, recording system 
 parameters, running the genetic algorithm, and modifying system configurations.
 
-Weeks 8-9 (05/05 - 05/12):
+Weeks 4-6 (04/07 - 04/21):
 - Conduct  testing and debugging of the Python API.
+- Conduct  testing of the C++ core components.
+
+Weeks 7-9 (04/28 - 05/12):
+- Implement GA algorithm.
 
 Weeks 10-11 (05/19 - 05/26):
-- Implement and optimize the previously identified computational acceleration 
-methods. 
+- If possible, find and implement acceleration method on current codebase 
+methods.
+- Prepare for the final presentation.
 
 Week 12 (06/02):
 - Final project presentation.
