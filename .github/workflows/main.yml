@@ -24,4 +24,3 @@ jobs:
         cd hw2/ckt77
         ../validate.sh
       shell: bash
-

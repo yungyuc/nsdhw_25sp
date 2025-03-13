@@ -1,0 +1,81 @@
+[33mcommit 618bc337b82633ad3be36345cdc75c5070be66bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mckt77-project-attempt2[m[33m)[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 17:11:18 2025 +0800
+
+    Revert "Merge branch 'ckt77-project-attempt2' of https://github.com/ckt77/nsdhw_25sp into project"
+    
+    This reverts commit 6315b952691393dab9c16d1897ca9b5ebf215fa4, reversing
+    changes made to 958cae2d8ee6b3f8933fdd1ee9554d471a908aa6.
+
+[33mcommit 0917099a49e0029a050e3967ce1b83fba545be40[m[33m ([m[1;31morigin/ckt77-project-attempt2[m[33m)[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 16:38:06 2025 +0800
+
+    Add .gitignore to ignore hw0/ckt77/
+
+[33mcommit 59b35cc9036ccbd1bbed949cf67434bb1418567d[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 16:35:41 2025 +0800
+
+    Update .gitignore to ignore hw0/ckt77/
+
+[33mcommit 9e7b233511d661d135536a051ff28eb398573320[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 11:38:45 2025 +0800
+
+    adjust line width; add description and schedule
+
+[33mcommit 6315b952691393dab9c16d1897ca9b5ebf215fa4[m
+Merge: 958cae2 d3916ee
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 11:47:14 2025 +0800
+
+    Merge branch 'ckt77-project-attempt2' of https://github.com/ckt77/nsdhw_25sp into project
+
+[33mcommit 958cae2d8ee6b3f8933fdd1ee9554d471a908aa6[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 11:46:45 2025 +0800
+
+    adjust line width; add descriptions and update schedule
+
+[33mcommit d3916ee6f1690cfebe18824a57bdcfdd25bf91fd[m
+Author: 陳士弘 <100576498+ckt77@users.noreply.github.com>
+Date:   Wed Mar 12 10:44:47 2025 +0800
+
+    Update README.rst
+
+[33mcommit 47eaf066410852567affa823dcd7063baecc59af[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Wed Mar 12 09:38:42 2025 +0800
+
+    adjust to 79-char line width
+
+[33mcommit 280c88ae974ceca070264f0bdc9c85fe8eb880b6[m
+Author: 陳士弘 <100576498+ckt77@users.noreply.github.com>
+Date:   Tue Mar 4 22:16:03 2025 +0800
+
+    Complete Schedule and Reference
+
+[33mcommit 8a6aed9b47fafcc17ebaf9c11ee0ca4640a9f5b2[m[33m ([m[1;32mckt77-project-attempt1[m[33m)[m
+Author: ckt77 <shihhong25@gmail.com>
+Date:   Tue Mar 4 15:09:58 2025 +0800
+
+    Initial commit: create the file
+
+[33mcommit f83e66ee5f60a614fbe5614581d5d09ced2c344d[m[33m ([m[1;31mupstream/project[m[33m, [m[1;31mupstream/master[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mproject[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Yung-Yu Chen <yyc@solvcon.net>
+Date:   Wed Feb 5 21:34:45 2025 +0800
+
+    Add homework assignment 1
+
+[33mcommit 426108e36a6e0ab6f0c17427dead7cfc5afd5223[m[33m ([m[1;32mhw0[m[33m)[m
+Author: Yung-Yu Chen <yyc@solvcon.net>
+Date:   Wed Feb 5 21:33:59 2025 +0800
+
+    Add homework assignment 0
+
+[33mcommit 2a15be73a6f8f425c1eb8c8e02ce92d3f91296cd[m
+Author: Yung-Yu Chen <yyc@solvcon.net>
+Date:   Wed Feb 5 21:25:08 2025 +0800
+
+    Initialize the nsd homework repository for 2025 spring semester
