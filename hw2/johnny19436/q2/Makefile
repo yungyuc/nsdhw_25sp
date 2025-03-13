@@ -2,8 +2,8 @@ PYTHON ?= python3
 CXX = g++
 # PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include')
 # PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include' 2>/dev/null | sed 's/-I//')
-PYTHON_VERSION := $(shell python3 -c "import sys; print('python{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
-PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include' 2>/dev/null)
+PYTHON_VERSION = $(shell python3 -c "import sys; print('python{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
+PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include' 2>/dev/null | sed 's/-I//')
 ifeq ($(PYBIND_INCLUDES),)
     PYBIND_INCLUDES = /usr/include/pybind11
 endif
