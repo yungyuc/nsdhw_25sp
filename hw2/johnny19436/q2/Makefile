@@ -1,10 +1,16 @@
 PYTHON ?= python3
-CXX = c++
-PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include')
-PYTHON_INCLUDE = $(shell $(PYTHON)-config --includes)
-PYTHON_LIBS = $(shell $(PYTHON)-config --ldflags)
+CXX = g++
+# PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include')
+# PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include' 2>/dev/null | sed 's/-I//')
+PYBIND_INCLUDES = $(shell $(PYTHON) -m pybind11 --includes | tr ' ' '\n' | grep 'pybind11/include' 2>/dev/null)
+ifeq ($(PYBIND_INCLUDES),)
+    PYBIND_INCLUDES = /usr/include/pybind11
+endif
 
-CXXFLAGS = -O3 -Wall -shared -std=c++14 -fPIC $(PYBIND_INCLUDES) $(PYTHON_INCLUDE) -undefined dynamic_lookup
+PYTHON_INCLUDE = $(shell $(PYTHON)-config --includes)
+PYTHON_LIBS = $(shell $(PYTHON)-config --ldflags) -lpython3.10
+
+CXXFLAGS = -O3 -Wall -shared -std=c++14 -fPIC $(PYBIND_INCLUDES) $(PYTHON_INCLUDE) 
 LDFLAGS = $(PYTHON_LIBS)
 
 EXT_SUFFIX = $(shell $(PYTHON)-config --extension-suffix)
