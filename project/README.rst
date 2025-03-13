@@ -76,6 +76,10 @@ Follow the format to add your project:
    `Project subject <github_account_name/README.rst>`__:
    https://github.com/github_account_name/project_name
 
+2. `brian9139 <https://github.com/brian9139>`__ for
+   `NoC-HR <brian9139/README.md>`__:
+   https://github.com/brian9139/NoC-HR.git
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example
