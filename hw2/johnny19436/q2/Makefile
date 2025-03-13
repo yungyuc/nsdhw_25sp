@@ -11,7 +11,7 @@ endif
 PYTHON_INCLUDE = $(shell $(PYTHON)-config --includes)
 PYTHON_LIBS = $(shell $(PYTHON)-config --ldflags) -l$(PYTHON_VERSION)
 
-CXXFLAGS = -O3 -Wall -shared -std=c++14 -fPIC $(PYBIND_INCLUDES) $(PYTHON_INCLUDE) 
+CXXFLAGS = -O3 -Wall -shared -std=c++14 -fPIC -I$(PYBIND_INCLUDES) -I$(PYTHON_INCLUDE) 
 LDFLAGS = $(PYTHON_LIBS)
 
 EXT_SUFFIX = $(shell $(PYTHON)-config --extension-suffix)
