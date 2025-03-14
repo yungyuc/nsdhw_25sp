@@ -1,36 +1,38 @@
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O3 -fPIC
 
-PYTHON_VERSION := $(shell python3 -c "import sys; print('python{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
-PYTHON_INCLUDE := $(shell python3 -c "from sysconfig import get_path; print(get_path('include'))")
+VENV := .venv
+PYTHON_VENV := $(VENV)/bin/python3
+PIP_VENV := $(VENV)/bin/pip
 
-PYBIND11_INCLUDE := $(shell python3 -m pybind11 --includes 2>/dev/null | sed 's/-I//')
-ifeq ($(PYBIND11_INCLUDE),)
-    PYBIND11_INCLUDE := /usr/include/pybind11
-endif
+# 自動獲取 Python 和 pybind11 路徑
+PYTHON_INCLUDE := $(shell $(PYTHON_VENV) -c "from sysconfig import get_path; print(get_path('include'))")
+PYBIND11_INCLUDE := $(shell $(PYTHON_VENV) -m pybind11 --includes 2>/dev/null | sed 's/-I//')
 
-.PHONY: all test clean install check_deps
+.PHONY: all test clean _setup_venv
 
-check_deps:
-	@command -v python3 >/dev/null 2>&1 || { echo >&2 "Python3 is not installed. Aborting."; exit 1; }
-	@python3 -c "import pybind11" >/dev/null 2>&1 || { echo >&2 "pybind11 is not installed. Aborting."; exit 1; }
-	@python3 -c "import pytest" >/dev/null 2>&1 || { echo >&2 "pytest is not installed. Aborting."; exit 1; }
+all: _setup_venv _vector.so
 
-all: check_deps _vector.so
+# 私有目標：設置虛擬環境並安裝依賴
+_setup_venv:
+	@if [ ! -d "$(VENV)" ]; then \
+		echo "Creating virtual environment..."; \
+		python3 -m venv $(VENV); \
+		$(PIP_VENV) install pybind11 pytest; \
+	fi
 
-_vector.so: vectormath.o
-	$(CXX) -shared -o _vector.so vectormath.o -fPIC -I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -l$(PYTHON_VERSION)
+# 編譯 C++ 模塊
+_vector.so: vectormath.cpp _setup_venv
+	$(CXX) $(CXXFLAGS) -shared -fPIC \
+		-I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) \
+		vectormath.cpp -o _vector.so \
+		$(shell $(PYTHON_VENV) -m pybind11 --includes)
 
-vectormath.o: vectormath.cpp
-	$(CXX) $(CXXFLAGS) -c vectormath.cpp -I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE)
+# 運行測試
+test: _vector.so
+	PYTHONPATH=. $(PYTHON_VENV) -m pytest -v test_vectormath.py
 
-test: all
-	PYTHONPATH=".:$(PYTHONPATH)" python3 -m pytest -v test_vectormath.py
-
+# 清理所有生成的文件（包括虛擬環境）
 clean:
-	rm -f *.o _vector.so
-	rm -rf __pycache__ .pytest_cache
-
-install:
-	python3 -m pip install --upgrade pip
-	python3 -m pip install pybind11 pytest
+	rm -f _vector.so
+	rm -rf __pycache__ .pytest_cache $(VENV)
