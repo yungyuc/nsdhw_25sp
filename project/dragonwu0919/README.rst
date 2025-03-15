@@ -38,7 +38,7 @@ comprising stocks and a banking asset, in which agents perform stock
 transactions.
 
 - Stock market
-  - marker clearing
+  - market clearing
   - dividend
   - price
 - agent
@@ -73,18 +73,42 @@ conditions, agents calculate their demand for stocks. The genetic algorithm
 iteratively evolves these rules by selecting and modifying them according to 
 their performance.
 
-The SFI-ASM explicitly includes a bank asset, providing a risk-free interest 
-rate. The agents' demand functions are deliberately designed as linear 
-functions of the stock price, which enables straightforward market clearing 
+There are two kind of asset in this model: stock and bank. Both of them grant
+agent additional interest at the end of each step. The difference is that
+dividend iterates with a random number, as banking provide a risk-free interest
+rate.
+
+After every agent provide its demand, the model need to do market clearing. To
+acheive this, the agents' demand functions are deliberately designed as linear
+functions of the stock price, which enables straightforward market clearing
 through adjustments to ensure stock supply and demand equilibrium.
+
+The pseudo-code mentioned above will be implemented in C++ layer, which may
+looks like following :
+
+- class agent
+  - vector<class predictor> predictors;
+    - class predictor{uint16 condition; float forecaster[3]};
+      // one forecaster requires three parameters
+  - void evaluate() 
+    // do genetic algorithm
+  - float demand()
+  - float* strategy()
+    // the function above will be called by clearMarket, and it will provide a
+    // list of float of the specific forecaster chosen in this step.
+  - void evolve()
+- class market
+  - float rate, price, dividend;
+  - void iterateDividend()
+  - void clearMarket()
 
 API Description
 ===============
 
 - `setup`: Initializes the system.
 - `step`: Executes a round of trading.
-- `record`: Records the current parameters of the system.
-- `iterate`: Runs one iteration of the genetic algorithm.
+- `show`: Retreive the current parameters of the system.
+- `evolve`: Runs one iteration of the genetic algorithm.
 - `modify`: Directly modifies a specific parameter of the system.
 
 Engineering Infrastructure
