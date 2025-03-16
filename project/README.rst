@@ -88,6 +88,10 @@ Follow the format to add your project:
    `PyLCA <didwhddks/README.rst>`__:
    https://github.com/didwhddks/PyLCA
 
+2. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
+   `C-STAM <dragonwu0919/README.rst>`__:
+   https://github.com/dragonwu0919/C-STAM
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example
