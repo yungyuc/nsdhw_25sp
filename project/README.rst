@@ -92,6 +92,10 @@ Follow the format to add your project:
    `C-STAM <dragonwu0919/README.rst>`__:
    https://github.com/dragonwu0919/C-STAM
 
+2. `brian9139 <https://github.com/brian9139>`__ for
+   `NoC-HR <brian9139/README.md>`__:
+   https://github.com/brian9139/NoC-HR.git
+
 .. note::
 
   Append your project after the first example entry.  Do not delete the example
