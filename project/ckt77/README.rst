@@ -17,19 +17,19 @@ computational cost of these algorithms increases significantly.
 CFLib aims to address this by providing efficient implementations that leverage
 parallelism, SIMD instructions, and optimized matrix calculation operations.
 
-Collaborative Filtering Algorithm
+Data Structure
 ============
 
-Collaborative filtering algorithms can be divided into two categories:
-memory-based and model-based. 
-
-- Memory-based algorithms, such as user-user and item-item collaborative
-  filtering, make predictions based on the entire user-item interaction matrix,
-  by finding similarities between users or items.
-- Model-based algorithms, such as matrix factorization techniques (e.g.,
-  Alternating Least Squares (ALS), Singular Value Decomposition (SVD), and
-  Stochastic Gradient Descent (SGD)), learn latent factors that represent users
-  and items.
+CFLib uses Compressed Sparse Row (CSR) and Compressed Sparse Column (CSC) 
+formats to store sparse matrices:
+- CSR consists of three arrays:
+  - data: The non-zero values in the matrix.
+  - indices: The column indices of the non-zero values.
+  - indptr: The index pointers to the start of rows in the data and indices 
+    arrays.
+- CSC is similar to CSR but stores the matrix by columns.
+This avoids storing zeros and accelerates row/column operations 
+(e.g., dot products).
 
 Problem to Solve
 ============
@@ -146,19 +146,20 @@ Week 1 (03/24): Design data preprocessing draft initial documentation and API
 specifications.
 
 Week 2 (03/31): Implement fundamental matrix factorization algorithms (ALS,
-SGD). (1/3); Write unit tests for ALS and SGD implementations.
+SGD). (1/3); Write unit tests for ALS and SGD implementations and CSR/CSC 
+operations.
 
 Week 3 (04/07): Implement fundamental matrix factorization algorithms (ALS,
-SGD). (2/3); Perform integration testing for the implemented algorithms.
+SGD). (2/3); Integration tests for similarity computation.
 
 Week 4 (04/14): Implement fundamental matrix factorization algorithms (ALS,
 SGD). (3/3); Optimize computation cores using OpenMP and SIMD. (1/3)
 
-Week 5 (04/21): Optimize computation cores using OpenMP and SIMD. (2/3); Write
-unit tests for SIMD optimizations.
+Week 5 (04/21): Optimize computation cores using OpenMP and SIMD. (2/3); SIMD 
+numerical validation tests (vs. CPU baseline).
 
-Week 6 (04/28): Optimize computation cores using OpenMP and SIMD. (3/3); Compare
-performance with existing APIs; Conduct performance testing.
+Week 6 (04/28): Optimize computation cores using OpenMP and SIMD. (3/3); 
+Performance benchmarking (vs. scikit-surprise on 10k+ user dataset).
 
 Week 7 (05/05): Test GPU acceleration solutions and evaluate performance
 differences; Conduct real-world dataset testing. (1/2)
