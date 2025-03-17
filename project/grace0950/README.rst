@@ -1,11 +1,11 @@
 =============================
-High-Performance Time Series Analysis and Forecasting
+HyperTS: High-Performance Time Series Analysis and Forecasting
 =============================
 
 Basic Information
 =================
 
-**GitHub repository:** https://github.com/grace0950/TimeSeriesDataProcessing/
+**GitHub repository:** https://github.com/grace0950/HyperTS
 
 Problem to Solve
 ================
