@@ -10,12 +10,12 @@ Basic Information
 Problem to Solve
 ================
 
-Time series data is essential in finance, meteorology, and engineering. Efficient analysis and forecasting of time series data are crucial for making smart decisions. However, existing Python solutions like `pandas` and `scikit-learn` often face performance bottlenecks when handling large datasets.
+Time series data is essential in finance, meteorology, and engineering. Efficient analysis and forecasting of time series data are crucial for making smart decisions. However, existing Python solutions like ``pandas`` and ``scikit-learn`` often face performance bottlenecks when handling large datasets.
 
 This project aims to solve the following problems:
 
 - **Slow computation:** Python is not optimized for large-scale time series calculations.
-- **High memory usage:** `pandas` struggles with managing memory efficiently for long time spans or high-frequency data.
+- **High memory usage:** ``pandas`` struggles with managing memory efficiently for long time spans or high-frequency data.
 - **Lack of optimized numerical methods:** Some algorithms, like Kalman Filter and Fourier Transform, are not well-optimized in Python, affecting performance.
 
 Mathematical and Algorithmic Foundation
@@ -108,12 +108,12 @@ The Python API allows users to integrate the system into their own projects.
 
 CSV Data Format
 ---------------
-`data.csv` is the input file for time series processing. The format should follow these rules:
+``data.csv`` is the input file for time series processing. The format should follow these rules:
 
 A CSV file must have at least two columns:
 
-- **`timestamp`**: The time label for each data point.
-- **`value`**: The measured value at that time.
+- ``timestamp``: The time label for each data point.
+- ``value``: The measured value at that time.
 
 Example:
 
@@ -124,8 +124,8 @@ Example:
    2025-03-17T12:00:01,0.7
    2025-03-17T12:00:02,0.2
 
-- The **`timestamp`** must be in **ISO 8601 format (`YYYY-MM-DD HH:MM:SS`)** or **Unix Timestamp (seconds/milliseconds)**.
-- The **`value`** should be a floating-point number or an integer.
+- The ``timestamp`` must be in **ISO 8601 format (`YYYY-MM-DD HH:MM:SS`)** or **Unix Timestamp (seconds/milliseconds)**.
+- The ``value`` should be a floating-point number or an integer.
 
 
 Engineering Infrastructure
