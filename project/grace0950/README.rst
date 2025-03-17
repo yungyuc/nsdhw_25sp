@@ -47,11 +47,11 @@ Workflow
 
 - **Input:** Accepts time series data from CSV, JSON, or a database.
 - **Processing (C++ Core):**
-  - Implements FFT (Fast Fourier Transform), Kalman Filter, and ARIMA for data analysis.
-  - Uses multi-threading to speed up computations.
+    - Implements FFT (Fast Fourier Transform), Kalman Filter, and ARIMA for data analysis.
+    - Uses multi-threading to speed up computations.
 - **Interface (Python API & CLI):**
-  - Allows users to configure analysis settings.
-  - Provides visualization tools using matplotlib.
+    - Allows users to configure analysis settings.
+    - Provides visualization tools using matplotlib.
 - **Output:** Saves results as JSON or CSV and can generate charts if needed.
 
 Modules
@@ -174,27 +174,27 @@ Development Phase (5 weeks)
 ---------------------------
 
 - **Week 4/5 (3/31 - 4/14):**
-  - Implement file I/O for CSV and JSON.
-  - Develop FFT computation module in C++.
-  - Implement Kalman Filter with multi-threading support.
-  - Develop ARIMA model in C++.
+    - Implement file I/O for CSV and JSON.
+    - Develop FFT computation module in C++.
+    - Implement Kalman Filter with multi-threading support.
+    - Develop ARIMA model in C++.
 - **Week 6 (4/15 - 4/21):**
-  - Integrate Python API for time series processing.
-  - Implement CLI for executing analysis from the command line.
+    - Integrate Python API for time series processing.
+    - Implement CLI for executing analysis from the command line.
 - **Week 7 (4/22 - 4/28):**
-  - Develop visualization tools using matplotlib.
-  - Optimize code for better performance and scalability.
+    - Develop visualization tools using matplotlib.
+    - Optimize code for better performance and scalability.
 
 Testing & Optimization Phase (2 weeks)
 --------------------------------------
 
 - **Week 8 (4/29 - 5/5):**
-  - Conduct unit testing and integration testing for all modules.
+    - Conduct unit testing and integration testing for all modules.
 - **Week 9 (5/6 - 5/12):**
-  - Performance benchmarking and debugging.
+    - Performance benchmarking and debugging.
 
 Documentation Phase (1 week)
 ----------------------------
 
 - **Week 10 (5/13 - 5/19):**
-  - Write project documentation, API references, and user guide.
+    - Write project documentation, API references, and user guide.
