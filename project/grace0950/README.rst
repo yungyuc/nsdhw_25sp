@@ -179,6 +179,7 @@ Development Phase (5 weeks)
     - Develop FFT computation module in C++.
     - Implement Kalman Filter with multi-threading support.
     - Develop ARIMA model in C++.
+    - Unit testing for each module as it is implemented.
 - **Week 6 (4/15 - 4/21):**
     - Integrate Python API for time series processing.
     - Implement CLI for executing analysis from the command line.
@@ -186,7 +187,7 @@ Development Phase (5 weeks)
     - Develop visualization tools using matplotlib.
     - Optimize code for better performance and scalability.
 
-Testing & Optimization Phase (2 weeks)
+Advanced Testing & Optimization Phase (2 weeks)
 --------------------------------------
 
 - **Week 8 (4/29 - 5/5):**
