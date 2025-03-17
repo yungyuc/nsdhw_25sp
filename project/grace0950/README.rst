@@ -10,12 +10,12 @@ Basic Information
 Problem to Solve
 ================
 
-Time series data is essential in finance, meteorology, and engineering. Efficient analysis and forecasting of time series data are crucial for making smart decisions. However, existing Python solutions like pandas and scikit-learn often face performance bottlenecks when handling large datasets.
+Time series data is essential in finance, meteorology, and engineering. Efficient analysis and forecasting of time series data are crucial for making smart decisions. However, existing Python solutions like `pandas` and `scikit-learn` often face performance bottlenecks when handling large datasets.
 
 This project aims to solve the following problems:
 
 - **Slow computation:** Python is not optimized for large-scale time series calculations.
-- **High memory usage:** pandas struggles with managing memory efficiently for long time spans or high-frequency data.
+- **High memory usage:** `pandas` struggles with managing memory efficiently for long time spans or high-frequency data.
 - **Lack of optimized numerical methods:** Some algorithms, like Kalman Filter and Fourier Transform, are not well-optimized in Python, affecting performance.
 
 Mathematical and Algorithmic Foundation
@@ -73,15 +73,14 @@ Command-Line Interface (CLI)
 Users can run time series analysis directly from the command line.
 
 .. code-block:: bash
+  # Run FFT on input data
+  ./timeseries_processor --input data.csv --method fft --output fft_result.json
 
-   # Run FFT on input data
-   ./timeseries_processor --input data.csv --method fft --output result.json
+  # Run Kalman Filter, allowing custom noise parameters
+  ./timeseries_processor --input data.csv --method kalman --process-noise 0.001 --measurement-noise 0.01 --output kalman_result.json
 
-   # Apply Kalman Filter
-   ./timeseries_processor --input data.csv --method kalman --output result.json
-
-   # Use ARIMA for forecasting
-   ./timeseries_processor --input data.csv --method arima --output forecast.csv
+  # Use ARIMA to predict 10 steps, specify model parameters (p=5, d=1, q=0)
+  ./timeseries_processor --input data.csv --method arima --order 5 1 0 --steps 10 --output arima_forecast.csv
 
 Python API
 ----------
@@ -96,16 +95,38 @@ The Python API allows users to integrate the system into their own projects.
    processor = TimeSeriesProcessor("data.csv")
 
    # Apply FFT
-   fft_result = processor.apply_fft()
+   fft_result = processor.fft_transform()
 
    # Apply Kalman Filter
-   kalman_result = processor.apply_kalman()
+   kalman_result = processor.kalman_filter(process_noise=1e-3, measurement_noise=1e-2)
 
    # Forecast using ARIMA
-   arima_forecast = processor.apply_arima(order=(5,1,0))
+   arima_forecast = processor.arima_forecast(order=(5, 1, 0), steps=10)
 
    # Save results
    processor.save_results("output.json")
+
+CSV Data Format
+---------------
+`data.csv` is the input file for time series processing. The format should follow these rules:
+
+A CSV file must have at least two columns:
+
+- **`timestamp`**: The time label for each data point.
+- **`value`**: The measured value at that time.
+
+Example:
+
+.. code-block:: csv
+
+   timestamp,value
+   2025-03-17T12:00:00,0.5
+   2025-03-17T12:00:01,0.7
+   2025-03-17T12:00:02,0.2
+
+- The **`timestamp`** must be in **ISO 8601 format (`YYYY-MM-DD HH:MM:SS`)** or **Unix Timestamp (seconds/milliseconds)**.
+- The **`value`** should be a floating-point number or an integer.
+
 
 Engineering Infrastructure
 ==========================
