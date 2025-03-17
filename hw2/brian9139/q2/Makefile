@@ -6,7 +6,7 @@ RUN_PYTHON := pip3 install --user pybind11
 endif
 
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -Wextra -O2 -fPIC
+CXXFLAGS = -std=c++11 -Wall -Wextra -O2 -fPIC $(shell python3-config --cflags)  # ✅ 加入 python3-config --cflags
 
 all: _vector.so
 
@@ -24,5 +24,4 @@ clean:
 	rm -f *.o _vector.so || true
 
 test:
-	@which pytest >/dev/null 2>&1 || pip3 install --user pytest  # ✅ 若 pytest 未安裝，則安裝
-	python3 -m pytest -v test_vector.py  # ✅ 確保用 python3 執行 pytest
+	python3 -m pytest -v test_vector.py
