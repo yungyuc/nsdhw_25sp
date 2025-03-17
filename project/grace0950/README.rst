@@ -73,6 +73,7 @@ Command-Line Interface (CLI)
 Users can run time series analysis directly from the command line.
 
 .. code-block:: bash
+
   # Run FFT on input data
   ./timeseries_processor --input data.csv --method fft --output fft_result.json
 
