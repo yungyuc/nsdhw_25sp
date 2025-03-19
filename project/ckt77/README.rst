@@ -20,16 +20,28 @@ parallelism, SIMD instructions, and optimized matrix calculation operations.
 Data Structure
 ============
 
-CFLib uses Compressed Sparse Row (CSR) and Compressed Sparse Column (CSC) 
+CFLib uses **Compressed Sparse Row (CSR)** and **Compressed Sparse Column (CSC)** 
 formats to store sparse matrices:
-- CSR consists of three arrays:
-  - data: The non-zero values in the matrix.
-  - indices: The column indices of the non-zero values.
-  - indptr: The index pointers to the start of rows in the data and indices 
-    arrays.
-- CSC is similar to CSR but stores the matrix by columns.
-This avoids storing zeros and accelerates row/column operations 
-(e.g., dot products).
+
+.. code-block:: python
+    :linenos:
+    :emphasize-lines: 3-5
+
+    # Example: Constructing a CSR matrix in SciPy
+    from scipy.sparse import csr_matrix
+    data = [5, 3, 2]     # Non-zero values (e.g., ratings)
+    indices = [0, 2, 1]  # Column indices of non-zero entries
+    indptr = [0, 2, 3]   # Row offset pointers (row 0: 0-2, row 1: 2-3)
+    csr_matrix = csr_matrix((data, indices, indptr), shape=(2, 3))
+
+- **CSR**: Optimized for row operations (e.g., user similarity)
+
+  - `data`: Stores non-zero values
+
+  - `indices`: Column indices of corresponding values
+
+  - `indptr`: Cumulative count of non-zeros per row
+- **CSC**: Column-wise analog for item-based operations
 
 Problem to Solve
 ============
@@ -155,17 +167,17 @@ SGD). (2/3); Integration tests for similarity computation.
 Week 4 (04/14): Implement fundamental matrix factorization algorithms (ALS,
 SGD). (3/3); Optimize computation cores using OpenMP and SIMD. (1/3)
 
-Week 5 (04/21): Optimize computation cores using OpenMP and SIMD. (2/3); SIMD 
-numerical validation tests (vs. CPU baseline).
+Week 5 (04/21): Optimize computation cores using OpenMP and SIMD. (2/3); 
+**Test GPU acceleration kernel validation (error tolerance < 1e-5).**;
+**Real-world dataset testing (MovieLens 10M); Performance benchmarking. (1/2)**
 
 Week 6 (04/28): Optimize computation cores using OpenMP and SIMD. (3/3); 
-Performance benchmarking (vs. scikit-surprise on 10k+ user dataset).
+**Real-world dataset testing (MovieLens 10M); Performance benchmarking. (2/2)**
 
-Week 7 (05/05): Test GPU acceleration solutions and evaluate performance
-differences; Conduct real-world dataset testing. (1/2)
+Week 7 (05/05): **Refine GPU memory management**; Conduct stress testing 
+(1M+ synthetic dataset). (1/2)
 
-Week 8 (05/12): Test GPU acceleration solutions and evaluate performance
-differences; Conduct real-world dataset testing. (2/2)
+Week 8 (05/12): **Finalize GPU optimization**; Analyze benchmark results. (2/2)
 
 Week 9 (05/19): Finalize module integration, complete API documentation and use
 cases. (1/2)
