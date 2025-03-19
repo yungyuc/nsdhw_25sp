@@ -93,6 +93,9 @@ Follow the format to add your project:
 6. `johnny19436 <https://github.com/johnny19436>`__ for
    `Risma <johnny19436/README.rst>`__:
    https://github.com/johnny19436/Risma
+7. `grace0950 <https://github.com/grace0950>`__ for
+   `HyperTS <grace0950/README.rst>`__:
+   https://github.com/grace0950/HyperTS
 
 
 .. note::
