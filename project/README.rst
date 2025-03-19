@@ -90,12 +90,12 @@ Follow the format to add your project:
 5. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
    `C-STAM <dragonwu0919/README.rst>`__:
    https://github.com/dragonwu0919/C-STAM
-6. `johnny19436 <https://github.com/johnny19436>`__ for
-   `Risma <johnny19436/README.rst>`__:
-   https://github.com/johnny19436/Risma
-7. `grace0950 <https://github.com/grace0950>`__ for
+6. `grace0950 <https://github.com/grace0950>`__ for
    `HyperTS <grace0950/README.rst>`__:
    https://github.com/grace0950/HyperTS
+7. `johnny19436 <https://github.com/johnny19436>`__ for
+   `Risma <johnny19436/README.rst>`__:
+   https://github.com/johnny19436/Risma
 
 
 .. note::
