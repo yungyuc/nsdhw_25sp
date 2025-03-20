@@ -168,16 +168,15 @@ Week 4 (04/14): Implement fundamental matrix factorization algorithms (ALS,
 SGD). (3/3); Optimize computation cores using OpenMP and SIMD. (1/3)
 
 Week 5 (04/21): Optimize computation cores using OpenMP and SIMD. (2/3); 
-**Test GPU acceleration kernel validation (error tolerance < 1e-5).**;
+**Test GPU acceleration kernel validation.**;
 **Real-world dataset testing (MovieLens 10M); Performance benchmarking. (1/2)**
 
 Week 6 (04/28): Optimize computation cores using OpenMP and SIMD. (3/3); 
 **Real-world dataset testing (MovieLens 10M); Performance benchmarking. (2/2)**
 
-Week 7 (05/05): **Refine GPU memory management**; Conduct stress testing 
-(1M+ synthetic dataset). (1/2)
+Week 7 (05/05): **Refine GPU memory management**;
 
-Week 8 (05/12): **Finalize GPU optimization**; Analyze benchmark results. (2/2)
+Week 8 (05/12): **Finalize GPU optimization**;
 
 Week 9 (05/19): Finalize module integration, complete API documentation and use
 cases. (1/2)
