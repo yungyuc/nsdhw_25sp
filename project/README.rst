@@ -96,6 +96,9 @@ Follow the format to add your project:
 7. `johnny19436 <https://github.com/johnny19436>`__ for
    `Risma <johnny19436/README.rst>`__:
    https://github.com/johnny19436/Risma
+8. `ckt77 <https://github.com/ckt77>`__ for
+   `CFLib <https://github.com/ckt77/nsdhw_25sp/tree/ckt77-project-attempt2/project/ckt77>`__:
+   https://github.com/ckt77/CFLib
 
 
 .. note::
