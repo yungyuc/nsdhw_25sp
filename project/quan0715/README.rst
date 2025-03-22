@@ -1,4 +1,4 @@
-Proposal: R-Tree Search Engine (Draft)
+Proposal: RTSEngine R-Tree Search Engine (Draft)
 ==========================================
 
 Basic Information
@@ -7,7 +7,7 @@ Basic Information
 **Project Name**: R-Tree Spatial Search Engine  
 **Goal**: Develop a high-performance R-Tree engine for multi-dimensional spatial data indexing and querying.  
 **Overview**: I'll implement the R-Tree data structure and algorithms with a clean API for spatial indexing. This project combines my interests in data structures and spatial computing.
-
+**GitHub Repository**: https://github.com/quan0715/RTSEngine
 .. note::
    This is an initial draft proposal. Details will be refined as the project progresses.
 
@@ -140,14 +140,3 @@ The project development is structured across 8 weeks, concluding on May 26th:
 
 - Complete testing suite and documentation
 - Optimize performance and prepare final demonstration
-
-Weekly progress reviews will ensure the project stays on track for the May 26th deadline.
-
-References
----------
-
-1. Guttman, A. (1984). "R-trees: A Dynamic Index Structure for Spatial Searching".
-2. Beckmann, N., et al. (1990). "The R*-tree: An Efficient and Robust Access Method for Points and Rectangles".
-3. Manolopoulos, Y., et al. (2005). *R-trees: Theory and Applications*.
-4. pybind11 Documentation: https://pybind11.readthedocs.io/
-
