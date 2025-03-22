@@ -96,7 +96,9 @@ Follow the format to add your project:
 7. `johnny19436 <https://github.com/johnny19436>`__ for
    `Risma <johnny19436/README.rst>`__:
    https://github.com/johnny19436/Risma
-
+8. `quan0715 <https://github.com/quan0715>`__ for
+   `RTSEngine <quan0715/README.rst>`__:
+   https://github.com/quan0715/RTSEngine
 
 .. note::
 
