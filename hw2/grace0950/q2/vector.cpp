@@ -1,6 +1,7 @@
 #include "vector.hpp"
 #include <cmath>     // for sqrt and acos
 #include <algorithm> // for max and min
+#include <stdexcept> // for std::invalid_argument
 
 double angle_between_vectors(double x1, double y1, double x2, double y2)
 {
