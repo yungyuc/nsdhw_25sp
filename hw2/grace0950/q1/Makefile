@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -g
 
-OBJS = main.o Line.o
+OBJS = main.o line.o
 TARGET = main
 
 all: $(TARGET)
@@ -9,8 +9,8 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-main.o: main.cpp Line.hpp
-Line.o: Line.cpp Line.hpp
+main.o: main.cpp line.hpp
+line.o: line.cpp line.hpp
 
 run: $(TARGET)
 	./$(TARGET)
