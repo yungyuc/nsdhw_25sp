@@ -84,21 +84,21 @@ Follow the format to add your project:
 3. `brian9139 <https://github.com/brian9139>`__ for
    `NoC-HR <brian9139/README.md>`__:
    https://github.com/brian9139/NoC-HR
-4. `didwhddks <https://github.com/didwhddks>`__ for
+4. `ckt77 <https://github.com/ckt77>`__ for
+   `CFLib <ckt77/README.rst>`__:
+   https://github.com/ckt77/CFLib
+5. `didwhddks <https://github.com/didwhddks>`__ for
    `PyLCA <didwhddks/README.rst>`__:
    https://github.com/didwhddks/PyLCA
-5. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
+6. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
    `C-STAM <dragonwu0919/README.rst>`__:
    https://github.com/dragonwu0919/C-STAM
-6. `grace0950 <https://github.com/grace0950>`__ for
+7. `grace0950 <https://github.com/grace0950>`__ for
    `HyperTS <grace0950/README.rst>`__:
    https://github.com/grace0950/HyperTS
-7. `johnny19436 <https://github.com/johnny19436>`__ for
+8. `johnny19436 <https://github.com/johnny19436>`__ for
    `Risma <johnny19436/README.rst>`__:
    https://github.com/johnny19436/Risma
-8. `ckt77 <https://github.com/ckt77>`__ for
-   `CFLib <https://github.com/ckt77/nsdhw_25sp/tree/ckt77-project-attempt2/project/ckt77>`__:
-   https://github.com/ckt77/CFLib
 
 
 .. note::
