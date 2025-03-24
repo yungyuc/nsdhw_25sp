@@ -9,12 +9,14 @@ ifeq ($(OPENMP_CHECK), yes)
     LDFLAGS += -fopenmp
 endif
 
-# 检查 pybind11 路径
-PYBIND_CHECK := $(shell which python3-config 2>/dev/null)
-ifneq ($(PYBIND_CHECK),)
-    PYBIND_INCLUDES := $(shell python3 -m pybind11 --includes 2>/dev/null)
+# 使用 python3-config 查找 Python 头文件路径
+PYTHON_INCLUDE := $(shell python3 -c "import sysconfig; print(sysconfig.get_path('include'))" 2>/dev/null || echo "/usr/include/python3")
+PYTHON_CONFIG := $(shell which python3-config 2>/dev/null)
+
+ifneq ($(PYTHON_CONFIG),)
+    PYBIND_INCLUDES := $(shell python3 -m pybind11 --includes 2>/dev/null || python3-config --includes)
 else
-    PYBIND_INCLUDES := -I/usr/include/python3.8 -I/usr/local/include/python3.8
+    PYBIND_INCLUDES := -I$(PYTHON_INCLUDE) -I/usr/include/python3.8 -I/usr/local/include/pybind11
 endif
 
 # 检查 MKL 库路径
@@ -22,7 +24,6 @@ MKL_PATHS := /usr/include/mkl /opt/intel/mkl/include /usr/local/include/mkl
 MKL_CHECK := $(shell for p in $(MKL_PATHS); do if [ -d $$p ]; then echo $$p; break; fi; done)
 ifneq ($(MKL_CHECK),)
     MKL_INCLUDE := -I$(MKL_CHECK)
-    HAS_MKL := 1
     CXXFLAGS += -DHAS_MKL
 else
     MKL_INCLUDE :=
