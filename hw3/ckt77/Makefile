@@ -2,14 +2,14 @@ CXX = g++
 CXXFLAGS = -std=c++11 -O3 -Wall -fPIC
 LDFLAGS = -shared
 
-# 检测系统是否支持 OpenMP
+# determine if OpenMP is available
 OPENMP_CHECK := $(shell $(CXX) -fopenmp -dM -E - < /dev/null 2>/dev/null | grep -q "_OPENMP" && echo "yes" || echo "no")
 ifeq ($(OPENMP_CHECK), yes)
     CXXFLAGS += -fopenmp
     LDFLAGS += -fopenmp
 endif
 
-# 使用 python3-config 查找 Python 头文件路径
+# determine Python include path
 PYTHON_INCLUDE := $(shell python3 -c "import sysconfig; print(sysconfig.get_path('include'))" 2>/dev/null || echo "/usr/include/python3")
 PYTHON_CONFIG := $(shell which python3-config 2>/dev/null)
 
@@ -19,7 +19,7 @@ else
     PYBIND_INCLUDES := -I$(PYTHON_INCLUDE) -I/usr/include/python3.8 -I/usr/local/include/pybind11
 endif
 
-# 检查 MKL 库路径
+# determine MKL include path
 MKL_PATHS := /usr/include/mkl /opt/intel/mkl/include /usr/local/include/mkl
 MKL_CHECK := $(shell for p in $(MKL_PATHS); do if [ -d $$p ]; then echo $$p; break; fi; done)
 ifneq ($(MKL_CHECK),)
@@ -30,7 +30,6 @@ else
     $(warning MKL include path not found, using alternative implementation)
 endif
 
-# MKL 库
 MKL_LIBS = -lmkl_rt -lpthread -lm -ldl
 ifneq ($(OPENMP_CHECK), yes)
     MKL_LIBS := $(filter-out -fopenmp,$(MKL_LIBS))
