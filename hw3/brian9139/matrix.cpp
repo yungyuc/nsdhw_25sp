@@ -77,6 +77,10 @@ Matrix multiply_tile(const Matrix &A, const Matrix &B, int tile_size) {
 
 // 使用 BLAS DGEMM 的矩陣乘法
 Matrix multiply_mkl(const Matrix &A, const Matrix &B) {
+#ifdef NO_BLAS
+    // fallback: 當 BLAS 不可用時，使用 tiled 乘法
+    return multiply_tile(A, B, 64);
+#else
     assert(A.cols_ == B.rows_);
     int m = A.rows_;
     int n = B.cols_;
@@ -90,6 +94,7 @@ Matrix multiply_mkl(const Matrix &A, const Matrix &B) {
                 0.0,
                 C.data_.data(), n);
     return C;
+#endif
 }
 
 // 用亂數填入矩陣
