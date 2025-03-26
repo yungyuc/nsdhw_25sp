@@ -1,0 +1,9 @@
+Matrix Multiplication Performance Benchmark
+=============================================
+Matrix size: 1000x1000
+Tiling block size: 64
+
+Naive version time: 0.697208 sec
+Tiled version time: 0.352467 sec (50.55% of naive)
+MKL version time:   0.004092 sec (0.59% of naive)
+
