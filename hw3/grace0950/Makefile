@@ -26,6 +26,7 @@ ifeq ($(UNAME_S),Darwin)
 else ifeq ($(UNAME_S),Linux)
     LDFLAGS = -shared
     PYEXT = .so  # Linux uses .so
+    INC = -I/usr/include/mkl
     BLAS_LINK = -lmkl_rt
 endif
 
@@ -53,7 +54,7 @@ else
 endif
 
 $(TARGET): $(SOURCES) | venv
-	$(CXX) $(CXXFLAGS) $(PYINC) $(LDFLAGS) -o $(TARGET) $(SOURCES) $(BLAS_LINK)
+	$(CXX) $(CXXFLAGS) $(PYINC) $(INC) $(LDFLAGS) -o $(TARGET) $(SOURCES) $(BLAS_LINK)
 
 test: $(TARGET)
 	cd $(CWD) && PYTHONPATH="$(CWD)" $(PYTEST) test_matrix.py -v
