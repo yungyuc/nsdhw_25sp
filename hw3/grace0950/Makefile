@@ -26,13 +26,7 @@ ifeq ($(UNAME_S),Darwin)
 else ifeq ($(UNAME_S),Linux)
     LDFLAGS = -shared
     PYEXT = .so  # Linux uses .so
-    # Linux tries to use OpenBLAS or MKL
-    ifneq ($(wildcard /usr/include/mkl.h),)
-        CXXFLAGS += -DUSE_MKL
-        BLAS_LINK = -lmkl_rt
-    else
-        BLAS_LINK = -lcblas
-    endif
+    BLAS_LINK = -lmkl_rt
 endif
 
 TARGET = _matrix$(PYEXT)
@@ -66,7 +60,6 @@ test: $(TARGET)
 
 benchmark: $(TARGET)
 	cd $(CWD) && PYTHONPATH="$(CWD)" $(PYTHON) test_matrix.py --benchmark
-
 
 clean:
 	rm -f $(TARGET)
