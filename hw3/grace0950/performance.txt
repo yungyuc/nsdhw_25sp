@@ -1,0 +1,15 @@
+Matrix Multiplication Performance Test Results (Matrix size: 1000x1000, Repetitions: 3)
+--------------------------------------------------------------
+Naive matrix multiplication time: 0.736884 seconds
+Tiled matrix multiplication time (tile size=16): 0.313269 seconds
+Tiled matrix multiplication time (tile size=32): 0.286157 seconds
+Tiled matrix multiplication time (tile size=64): 0.355462 seconds
+Best tiled matrix multiplication time (tile size=32): 0.286157 seconds
+MKL matrix multiplication time: 0.006319 seconds
+--------------------------------------------------------------
+Speedup of tiled vs naive: 2.58x
+Speedup of MKL vs naive: 116.62x
+Speedup of MKL vs tiled: 45.29x
+Performance improvement of tiled vs naive: 61.17%
+--------------------------------------------------------------
+Time ratio of tiled vs naive: 0.3883 (required < 0.8)
