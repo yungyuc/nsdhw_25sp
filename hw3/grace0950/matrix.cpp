@@ -7,7 +7,7 @@
 #ifdef USE_MKL
 #include <mkl.h>
 #else
-#include <openblas/cblas.h>
+#include <cblas.h>
 #endif
 #endif
 

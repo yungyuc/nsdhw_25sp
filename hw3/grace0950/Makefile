@@ -31,7 +31,7 @@ else ifeq ($(UNAME_S),Linux)
         CXXFLAGS += -DUSE_MKL
         BLAS_LINK = -lmkl_rt
     else
-        BLAS_LINK = -lopenblas
+        BLAS_LINK = -lcblas
     endif
 endif
 
@@ -72,6 +72,4 @@ clean:
 	rm -f $(TARGET)
 	rm -rf __pycache__
 	rm -rf .pytest_cache
-
-distclean: clean
 	rm -rf $(VENV)
