@@ -102,12 +102,9 @@ Follow the format to add your project:
 9. `quan0715 <https://github.com/quan0715>`__ for
    `RTSEngine <quan0715/README.rst>`__:
    https://github.com/quan0715/RTSEngine
-
-.. note::
-
-2. `xuryp <https://github.com/xuryp>`__ for
-   `Computational Geometry Library for Convex Hull Computation <xuryp/README.rst>`__:
-   https://github.com/xuryp/Computational_Geometry_Library_for_Convex_Hull_Computation
+10. `xuryp <https://github.com/xuryp>`__ for
+    `CG Lib for Convex Hull <xuryp/README.rst>`__:
+    https://github.com/xuryp/Computational_Geometry_Library_for_Convex_Hull_Computation
 
 .. note::
 
