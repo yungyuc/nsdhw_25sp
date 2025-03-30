@@ -1,0 +1,5 @@
+Matrix size: 1000 x 1000
+Naive multiplication time: 0.513358 seconds
+Tiled multiplication time: 0.366586 seconds
+MKL DGEMM multiplication time: 0.008352 seconds
+Tiled/Naive speedup: 71.409467%
