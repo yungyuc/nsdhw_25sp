@@ -1,0 +1,6 @@
+Matrix multiplication performance results:
+Matrix size: 1000 x 1000
+Test round: 5, and take the minimum time
+Naive multiplication runtime: 0.702616 seconds
+Tiled multiplication runtime (tile size 32): 0.402930 seconds
+Runtime of tiled multiplication is 57.35% of naive multiplication
