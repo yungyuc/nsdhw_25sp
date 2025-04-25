@@ -13,7 +13,7 @@
 #include <cstddef>
 #include <chrono>
 
-// 全域記數器
+// 全域計數器
 static std::atomic<size_t> g_bytes_in_use{0};
 static std::atomic<size_t> g_total_allocated{0};
 static std::atomic<size_t> g_total_deallocated{0};
@@ -77,10 +77,10 @@ extern "C" {
     }
 
     MatrixHandle multiply_naive_c(MatrixHandle Ah, MatrixHandle Bh) {
-        auto *A = reinterpret_cast<Matrix*>(Ah);
-        auto *B = reinterpret_cast<Matrix*>(Bh);
+        Matrix* A = reinterpret_cast<Matrix*>(Ah);
+        Matrix* B = reinterpret_cast<Matrix*>(Bh);
         int m = A->rows_, k = A->cols_, n = B->cols_;
-        Matrix *C = new Matrix(m, n);
+        Matrix* C = new Matrix(m, n);
         for (int i = 0; i < m; ++i)
             for (int j = 0; j < n; ++j) {
                 double sum = 0.0;
@@ -92,10 +92,10 @@ extern "C" {
     }
 
     MatrixHandle multiply_tile_c(MatrixHandle Ah, MatrixHandle Bh, int tile_size) {
-        auto *A = reinterpret_cast<Matrix*>(Ah);
-        auto *B = reinterpret_cast<Matrix*>(Bh);
+        Matrix* A = reinterpret_cast<Matrix*>(Ah);
+        Matrix* B = reinterpret_cast<Matrix*>(Bh);
         int m = A->rows_, k = A->cols_, n = B->cols_;
-        Matrix *C = new Matrix(m, n);
+        Matrix* C = new Matrix(m, n);
         std::fill(C->data_.begin(), C->data_.end(), 0.0);
         for (int i0 = 0; i0 < m; i0 += tile_size) {
             int i_max = std::min(i0 + tile_size, m);
@@ -115,11 +115,16 @@ extern "C" {
         return reinterpret_cast<MatrixHandle>(C);
     }
 
+    // 在 NO_BLAS 環境下改用 tiled fallback，否則呼叫 cblas_dgemm
     MatrixHandle multiply_mkl_c(MatrixHandle Ah, MatrixHandle Bh) {
-        auto *A = reinterpret_cast<Matrix*>(Ah);
-        auto *B = reinterpret_cast<Matrix*>(Bh);
+#ifdef NO_BLAS
+        // tile fallback, tile size chosen as 64
+        return multiply_tile_c(Ah, Bh, 64);
+#else
+        Matrix* A = reinterpret_cast<Matrix*>(Ah);
+        Matrix* B = reinterpret_cast<Matrix*>(Bh);
         int m = A->rows_, k = A->cols_, n = B->cols_;
-        Matrix *C = new Matrix(m, n);
+        Matrix* C = new Matrix(m, n);
         cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans,
                     m, n, k,
                     1.0,
@@ -128,11 +133,12 @@ extern "C" {
                     0.0,
                     C->data_.data(), n);
         return reinterpret_cast<MatrixHandle>(C);
+#endif
     }
 
     int compare_matrices_c(MatrixHandle Ah, MatrixHandle Bh, double tol) {
-        auto *A = reinterpret_cast<Matrix*>(Ah);
-        auto *B = reinterpret_cast<Matrix*>(Bh);
+        Matrix* A = reinterpret_cast<Matrix*>(Ah);
+        Matrix* B = reinterpret_cast<Matrix*>(Bh);
         if (A->rows_ != B->rows_ || A->cols_ != B->cols_) return 0;
         for (size_t i = 0; i < A->data_.size(); ++i)
             if (std::abs(A->data_[i] - B->data_[i]) > tol)
@@ -152,9 +158,11 @@ extern "C" {
     size_t matrix_deallocated(){ return g_total_deallocated.load(); }
 }
 
+// 主程式
 int main(int argc, char** argv) {
     srand((unsigned)time(NULL));
     using clk = std::chrono::high_resolution_clock;
+
     if (argc > 1 && strcmp(argv[1], "test") == 0) {
         int m = 100;
         void* A = create_matrix(m, m);
@@ -192,12 +200,9 @@ int main(int argc, char** argv) {
         FILE* fp = fopen("performance.txt", "w");
         if (fp) {
             fprintf(fp, "Matrix size: %d x %d\n", n, n);
-            fprintf(fp, "Naive:  %f s\n",
-                    std::chrono::duration<double>(t1 - t0).count());
-            fprintf(fp, "Tile:   %f s\n",
-                    std::chrono::duration<double>(t2 - t1).count());
-            fprintf(fp, "MKL:    %f s\n",
-                    std::chrono::duration<double>(t3 - t2).count());
+            fprintf(fp, "Naive:  %f s\n", std::chrono::duration<double>(t1 - t0).count());
+            fprintf(fp, "Tile:   %f s\n", std::chrono::duration<double>(t2 - t1).count());
+            fprintf(fp, "MKL:    %f s\n", std::chrono::duration<double>(t3 - t2).count());
             fclose(fp);
         }
         free_matrix(C1);
