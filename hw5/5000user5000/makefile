@@ -1,25 +1,56 @@
-CXX = c++
-CXXFLAGS = -O2 -Wall -std=c++17 -fPIC
-LDFLAGS = -shared
-PYTHON_INCLUDES = $(shell python3 -m pybind11 --includes)
-NUMPY_INCLUDE = $(shell python3 -c "import numpy; print(numpy.get_include())")
-LIBS = -lm -lblas
+# Compiler and flags
+CXX := g++
+CXXFLAGS := -O2 -march=native -std=c++17 -fPIC
 
-TARGET = _matrix$(PYTHON_SOEXT)
-PYTHON_SOEXT := $(shell python3-config --extension-suffix)
+# Python executable and its include/ldflags
+PYTHON := python3
+PYTHON_VERSION := $(shell $(PYTHON) -c "import sys; print('python{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
+PYTHON_INCLUDE := $(shell $(PYTHON) -c "from sysconfig import get_path; print(get_path('include'))")
+PYTHON_LDFLAGS := $(shell $(PYTHON)-config --ldflags)
 
-SRCS = ../mod.cpp matrix.cpp
-OBJS = $(SRCS:.cpp=.o)
+# Pybind11 include path (with fallback)
+PYBIND11_INCLUDE := $(shell $(PYTHON) -m pybind11 --includes 2>/dev/null | sed 's/-I//')
+ifeq ($(PYBIND11_INCLUDE),)
+	PYBIND11_INCLUDE := /usr/include/pybind11
+endif
+
+# NumPy include path
+NUMPY_INCLUDE := $(shell $(PYTHON) -c "import numpy; print(numpy.get_include())")
+
+# MKL settings (optional fallback to BLAS if MKL not available)
+MKL_INCLUDE := /usr/include/mkl
+MKL_LIBS := -lmkl_rt -lpthread -lm -ldl   # Intel MKL runtime libraries
+
+# Aggregate include paths
+INCLUDES := -I$(PYTHON_INCLUDE) -I$(PYBIND11_INCLUDE) -I$(NUMPY_INCLUDE) -I$(MKL_INCLUDE) -I.
+
+# Link flags: Python + MKL
+LDFLAGS := -shared $(PYTHON_LDFLAGS) $(MKL_LIBS)
+
+# Extension suffix for Python module
+TARGET := _matrix$(shell $(PYTHON)-config --extension-suffix)
+
+# Object files
+OBJ1 := mod.o
+OBJ2 := matrix.o
 
 .PHONY: all clean
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(LDFLAGS) -o $@ $^ $(LIBS)
+# Compile the provided wrapper (mod.cpp) into mod.o
+# mod.cpp is located in the parent directory (hw5/)
+mod.o: ../mod.cpp matrix.hpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ -c ../mod.cpp
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(PYTHON_INCLUDES) -I$(NUMPY_INCLUDE) -I. -c $< -o $@
+# Compile your implementation
+matrix.o: matrix.cpp matrix.hpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ -c matrix.cpp
+
+# Link into a Python extension
+$(TARGET): $(OBJ1) $(OBJ2)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 clean:
-	rm -f *.o _matrix*.so ../*.o
+	rm -f $(OBJ1) $(OBJ2) $(TARGET)
+
