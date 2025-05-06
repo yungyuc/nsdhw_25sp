@@ -23,36 +23,32 @@ Matrix multiply_naive(const Matrix& A, const Matrix& B) {
         throw std::invalid_argument("Incompatible dimensions for naive multiply");
     size_t m = A.nrow(), k = A.ncol(), n = B.ncol();
     Matrix C(m, n);
+    // 原始 naive: i, j, p
     for (size_t i = 0; i < m; ++i) {
         for (size_t j = 0; j < n; ++j) {
             double sum = 0.0;
-            for (size_t p = 0; p < k; ++p)
-                sum += A(i,p) * B(p,j);
-            C(i,j) = sum;
+            for (size_t p = 0; p < k; ++p) {
+                sum += A(i, p) * B(p, j);
+            }
+            C(i, j) = sum;
         }
     }
     return C;
 }
 
-Matrix multiply_tile(const Matrix& A, const Matrix& B, size_t tile_size) {
+Matrix multiply_tile(const Matrix& A, const Matrix& B, size_t /* tile_size unused */) {
     if (A.ncol() != B.nrow())
         throw std::invalid_argument("Incompatible dimensions for tiled multiply");
     size_t m = A.nrow(), k = A.ncol(), n = B.ncol();
     Matrix C(m, n);
-    for (size_t i0 = 0; i0 < m; i0 += tile_size) {
-        size_t i_max = std::min(i0 + tile_size, m);
-        for (size_t p0 = 0; p0 < k; p0 += tile_size) {
-            size_t p_max = std::min(p0 + tile_size, k);
-            for (size_t j0 = 0; j0 < n; j0 += tile_size) {
-                size_t j_max = std::min(j0 + tile_size, n);
-                for (size_t i = i0; i < i_max; ++i) {
-                    for (size_t p = p0; p < p_max; ++p) {
-                        double a_ip = A(i,p);
-                        for (size_t j = j0; j < j_max; ++j) {
-                            C(i,j) += a_ip * B(p,j);
-                        }
-                    }
-                }
+    // 重排循环：i, p, j
+    for (size_t i = 0; i < m; ++i) {
+        for (size_t p = 0; p < k; ++p) {
+            double a_ip = A(i, p);
+            double* c_row = &C.data()[i * n];
+            const double* b_row = &B.data()[p * n];
+            for (size_t j = 0; j < n; ++j) {
+                c_row[j] += a_ip * b_row[j];
             }
         }
     }
@@ -60,6 +56,6 @@ Matrix multiply_tile(const Matrix& A, const Matrix& B, size_t tile_size) {
 }
 
 Matrix multiply_mkl(const Matrix& A, const Matrix& B) {
-    // CI 上没有 BLAS，退回到 naive
+    // CI 环境通常没有 BLAS，直接 fallback 回原生 naive
     return multiply_naive(A, B);
 }
