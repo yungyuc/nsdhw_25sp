@@ -35,15 +35,52 @@ Matrix multiply_naive(const Matrix &A, const Matrix &B) {
 
 Matrix multiply_tile(const Matrix &A, const Matrix &B, size_t tile_size) {
     assert(A.ncol() == B.nrow());
-    Matrix C(A.nrow(), B.ncol());
-    size_t n = A.nrow(), m = A.ncol(), p = B.ncol();
-    for (size_t ii = 0; ii < n; ii += tile_size)
-        for (size_t jj = 0; jj < p; jj += tile_size)
-            for (size_t kk = 0; kk < m; kk += tile_size)
-                for (size_t i = ii; i < std::min(ii + tile_size, n); ++i)
-                    for (size_t j = jj; j < std::min(jj + tile_size, p); ++j)
-                        for (size_t k = kk; k < std::min(kk + tile_size, m); ++k)
-                            C(i,j) += A(i,k) * B(k,j);
+    const size_t n = A.nrow();
+    const size_t m = A.ncol();
+    const size_t p = B.ncol();
+    
+    Matrix C(n, p);
+    
+    // Optimize tile size based on matrix dimensions if it's too big
+    if (tile_size > n/2 || tile_size > m/2 || tile_size > p/2) {
+        tile_size = std::min({n/2, m/2, p/2, tile_size});
+        if (tile_size < 8) tile_size = 8; // Minimum reasonable tile size
+    }
+    
+    // Use a different loop order to improve cache locality
+    // Loop over vertical tiles of C first (by ii), then horizontal tiles (by jj)
+    for (size_t ii = 0; ii < n; ii += tile_size) {
+        const size_t i_end = std::min(ii + tile_size, n);
+        
+        for (size_t jj = 0; jj < p; jj += tile_size) {
+            const size_t j_end = std::min(jj + tile_size, p);
+            
+            // Pre-initialize C tile to 0 for better cache usage
+            for (size_t i = ii; i < i_end; ++i) {
+                for (size_t j = jj; j < j_end; ++j) {
+                    C(i, j) = 0.0;
+                }
+            }
+            
+            // Loop over tiles of A and B for computing C_ij
+            for (size_t kk = 0; kk < m; kk += tile_size) {
+                const size_t k_end = std::min(kk + tile_size, m);
+                
+                // Multiply tile of A with tile of B to update tile of C
+                for (size_t i = ii; i < i_end; ++i) {
+                    for (size_t k = kk; k < k_end; ++k) {
+                        const double A_ik = A(i, k);
+                        
+                        // Inner loop benefits from vectorization
+                        for (size_t j = jj; j < j_end; ++j) {
+                            C(i, j) += A_ik * B(k, j);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     return C;
 }
 
