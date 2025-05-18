@@ -61,27 +61,27 @@ Time Table
     - `5000user5000 <https://github.com/5000user5000>`__
     - `mpGEMM <5000user5000/README.rst>`__:
       https://github.com/5000user5000/mpGEMM
-  # - 2
+  * - 2
     - 07:40 - 08:00
     - `Seco1024 <https://github.com/Seco1024>`__
     - `ZenANN <Seco1024/README.rst>`__:
       https://github.com/Seco1024/ZenANN
-  # - 3
+  * - 3
     - 08:00 - 08:20
     - `brian9139 <https://github.com/brian9139>`__
     - `NoC-HR <brian9139/README.md>`__:
       https://github.com/brian9139/NoC-HR
-  # - 4
+  * - 4
     - 08:20 - 08:40
     - `didwhddks <https://github.com/didwhddks>`__
     - `PyLCA <didwhddks/README.rst>`__:
       https://github.com/didwhddks/PyLCA
-  # - 5
+  * - 5
     - 08:40 - 09:00
     - `dragonwu0919 <https://github.com/dragonwu0919>`__
     - `C-STAM <dragonwu0919/README.rst>`__:
       https://github.com/dragonwu0919/C-STAM
-  # - 6
+  * - 6
     - 09:00 - 09:20
     - `johnny19436 <https://github.com/johnny19436>`__
     - `Risma <johnny19436/README.rst>`__:
