@@ -49,7 +49,7 @@ Time Table
 
   The meeting room for the presentation is still EC114.
 
-.. list-table:: 2nd June, 2025 (Monday) 7:20-9:20 (EC114)
+.. list-table:: 2nd June, 2025 (Monday) 8:00-9:30 (EC114)
   :header-rows: 1
 
   * - ID
@@ -57,32 +57,32 @@ Time Table
     - Presenter
     - Project
   * - 1
-    - 07:20 - 07:40
+    - 08:00 - 08:15
     - `5000user5000 <https://github.com/5000user5000>`__
     - `mpGEMM <5000user5000/README.rst>`__:
       https://github.com/5000user5000/mpGEMM
   * - 2
-    - 07:40 - 08:00
+    - 08:15 - 08:30
     - `Seco1024 <https://github.com/Seco1024>`__
     - `ZenANN <Seco1024/README.rst>`__:
       https://github.com/Seco1024/ZenANN
   * - 3
-    - 08:00 - 08:20
+    - 08:30 - 08:45
     - `brian9139 <https://github.com/brian9139>`__
     - `NoC-HR <brian9139/README.md>`__:
       https://github.com/brian9139/NoC-HR
   * - 4
-    - 08:20 - 08:40
+    - 08:45 - 09:00
     - `didwhddks <https://github.com/didwhddks>`__
     - `PyLCA <didwhddks/README.rst>`__:
       https://github.com/didwhddks/PyLCA
   * - 5
-    - 08:40 - 09:00
+    - 09:00 - 09:15
     - `dragonwu0919 <https://github.com/dragonwu0919>`__
     - `C-STAM <dragonwu0919/README.rst>`__:
       https://github.com/dragonwu0919/C-STAM
   * - 6
-    - 09:00 - 09:20
+    - 09:15 - 09:30
     - `johnny19436 <https://github.com/johnny19436>`__
     - `Risma <johnny19436/README.rst>`__:
       https://github.com/johnny19436/Risma
