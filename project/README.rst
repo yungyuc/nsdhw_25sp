@@ -49,7 +49,7 @@ Time Table
 
   The meeting room for the presentation is still EC114.
 
-.. list-table:: 2nd June, 2025 (Monday) 7:00-11:00 (EC114)
+.. list-table:: 2nd June, 2025 (Monday) 8:00-9:30 (EC114)
   :header-rows: 1
 
   * - ID
@@ -57,10 +57,35 @@ Time Table
     - Presenter
     - Project
   * - 1
-    - 07:00 - 07:15
-    - `github_account_name <https://github.com/github_account_name>`__
-    - `Project subject <github_account_name/README.rst>`__:
-      https://github.com/github_account_name/project_name
+    - 08:00 - 08:15
+    - `5000user5000 <https://github.com/5000user5000>`__
+    - `mpGEMM <5000user5000/README.rst>`__:
+      https://github.com/5000user5000/mpGEMM
+  * - 2
+    - 08:15 - 08:30
+    - `Seco1024 <https://github.com/Seco1024>`__
+    - `ZenANN <Seco1024/README.rst>`__:
+      https://github.com/Seco1024/ZenANN
+  * - 3
+    - 08:30 - 08:45
+    - `brian9139 <https://github.com/brian9139>`__
+    - `NoC-HR <brian9139/README.md>`__:
+      https://github.com/brian9139/NoC-HR
+  * - 4
+    - 08:45 - 09:00
+    - `didwhddks <https://github.com/didwhddks>`__
+    - `PyLCA <didwhddks/README.rst>`__:
+      https://github.com/didwhddks/PyLCA
+  * - 5
+    - 09:00 - 09:15
+    - `dragonwu0919 <https://github.com/dragonwu0919>`__
+    - `C-STAM <dragonwu0919/README.rst>`__:
+      https://github.com/dragonwu0919/C-STAM
+  * - 6
+    - 09:15 - 09:30
+    - `johnny19436 <https://github.com/johnny19436>`__
+    - `Risma <johnny19436/README.rst>`__:
+      https://github.com/johnny19436/Risma
 
 ..
  Projects by Topics
@@ -72,9 +97,11 @@ Projects by Account Names
 
 Follow the format to add your project:
 
-0. `github_account_name <https://github.com/github_account_name>`__ for
-   `Project subject <github_account_name/README.rst>`__:
-   https://github.com/github_account_name/project_name
+..
+  0. `github_account_name <https://github.com/github_account_name>`__ for
+     `Project subject <github_account_name/README.rst>`__:
+     https://github.com/github_account_name/project_name
+
 1. `5000user5000 <https://github.com/5000user5000>`__ for
    `mpGEMM <5000user5000/README.rst>`__:
    https://github.com/5000user5000/mpGEMM
@@ -84,27 +111,15 @@ Follow the format to add your project:
 3. `brian9139 <https://github.com/brian9139>`__ for
    `NoC-HR <brian9139/README.md>`__:
    https://github.com/brian9139/NoC-HR
-4. `ckt77 <https://github.com/ckt77>`__ for
-   `CFLib <ckt77/README.rst>`__:
-   https://github.com/ckt77/CFLib
-5. `didwhddks <https://github.com/didwhddks>`__ for
+4. `didwhddks <https://github.com/didwhddks>`__ for
    `PyLCA <didwhddks/README.rst>`__:
    https://github.com/didwhddks/PyLCA
-6. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
+5. `dragonwu0919 <https://github.com/dragonwu0919>`__ for
    `C-STAM <dragonwu0919/README.rst>`__:
    https://github.com/dragonwu0919/C-STAM
-7. `grace0950 <https://github.com/grace0950>`__ for
-   `HyperTS <grace0950/README.rst>`__:
-   https://github.com/grace0950/HyperTS
-8. `johnny19436 <https://github.com/johnny19436>`__ for
+6. `johnny19436 <https://github.com/johnny19436>`__ for
    `Risma <johnny19436/README.rst>`__:
    https://github.com/johnny19436/Risma
-9. `quan0715 <https://github.com/quan0715>`__ for
-   `RTSEngine <quan0715/README.rst>`__:
-   https://github.com/quan0715/RTSEngine
-10. `xuryp <https://github.com/xuryp>`__ for
-    `CG Lib for Convex Hull <xuryp/README.rst>`__:
-    https://github.com/xuryp/Computational_Geometry_Library_for_Convex_Hull_Computation
 
 .. note::
 
