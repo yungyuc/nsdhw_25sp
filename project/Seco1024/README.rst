@@ -65,22 +65,19 @@ different index classes.
 1. **Base Index Class**
 
    - ``indexBase``: Defines the common API for all indexing methods (e.g.,
-     ``add()``, ``search()``, ``train()``, ``reorder_layout()``)
-   - Implement baseline search method using KD-tree as data structure
+     ``add()``, ``search()``, ``write_index()``, etc.)
 
-2. **Derived Index Classes**
+2. **KD-tree Index Class**
 
-   - ``indexHNSW``: A graph-based structure for accurate and efficient ANN
-   - ``indexIVF``: A cluster-based structure for large datasets
+   - ``KDTreeIndex``: Serves as a baseline which performs exact search
 
-3. **Hybrid Index Classes**
+3. **IVF Index Class**
 
-   - ``indexIVF_HNSW`` / ``indexHNSW_IVF``: For fast-coveraging larger datasets
+   - ``IVFIndex``: A cluster-based structure for large dataset
 
-4. **(Optional) Quantization Index Classes**
+4. **HNSW Index Class**
 
-   - ``indexPQ``: Combined with product quantization for memory-limited
-     scenarios
+   - ``HNSWIndex``: A graph-based structure for accurate and efficient ANN
 
    *Note:* The actual implementation detail of HNSW may be built on Faiss’s
    interface according to development progress.
@@ -88,16 +85,15 @@ different index classes.
 Processing Flow
 ~~~~~~~~~~~~~~~
 
-1. Initialize an index (e.g., ``indexBase``, ``indexHNSW``).
-2. Build an index:
+1. Initialize an index (e.g., ``IVFIndex``, ``HNSWIndex``).
+2. Build an index with ``add()`` :
    
-   - Add the given vector data using ``add()`` to a specific index instance.
+   - Add the given vector data to a specific index instance.
    - Train index with ``train()`` if needed.
-   - Optimize the index data layout with ``reorder_layout()`` to improve cache
-     locality.
+   - Optimize the index data layout to improve cache locality if needed.
 
 3. Perform a query on the specified index instance using ``search()``.
-4. Evaluate accuracy using the ``get_statistics()`` API.
+4. Get result set with top-k id & estimated distance for each query.
 
 API Description
 ---------------
@@ -109,16 +105,13 @@ A simple Python example to understand the API design:
     import zenann
 
     # Initialize an HNSW index
-    index = zenann.HNSWIndex(dimension=128, ef_construction=200, M=16)
+    index = zenann.HNSWIndex(dim=128, M=16, efConstruction=200)
 
     # Add vectors to the index and conduct reordering
     index.add(data_vectors)
-    index.train()
-    index.reorder_layout()
 
     # Perform a search
     results = index.search(query_vector, k=5, efSearch=100)
-    recall = get_statistics(results, ground_truth)
 
 Engineering Infrastructure
 --------------------------
@@ -137,13 +130,13 @@ Version Control
 Testing Framework
 ~~~~~~~~~~~~~~~~~
 
-- **C++**: Google Test
 - **Python**: pytest
 
 Documentation
 ~~~~~~~~~~~~~
 
 - Markdown
+- Mermaid
 
 Continuous Integration
 ~~~~~~~~~~~~~~~~~~~~~~
